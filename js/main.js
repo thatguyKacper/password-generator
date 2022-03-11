@@ -5,6 +5,7 @@ const lowercaseEl = document.getElementById('lowercase');
 const numbersEl = document.getElementById('numbers');
 const symbolsEl = document.getElementById('symbols');
 const generateEl = document.getElementById('generate');
+const clipboardEl = document.getElementById('clipboard');
 
 generateEl.addEventListener('click', () => {
   const length = Number(lengthEl.value);
@@ -20,6 +21,10 @@ generateEl.addEventListener('click', () => {
     hasNumber,
     hasSymbol
   );
+});
+
+clipboardEl.addEventListener('click', () => {
+  navigator.clipboard.writeText(resultEl.innerText);
 });
 
 function generatePassword(length, upper, lower, number, symbol) {
@@ -48,7 +53,7 @@ function generatePassword(length, upper, lower, number, symbol) {
       generatedChars.push(randomSymbol());
     }
   }
-  // console.log(generatedChars);
+
   let finalPassword = [];
 
   for (let index = 0; index < length; index++) {
@@ -78,11 +83,5 @@ function randomSymbol() {
   }
   symbols.push(String.fromCharCode(Math.floor(Math.random() * 6) + 91));
   symbols.push(String.fromCharCode(Math.floor(Math.random() * 4) + 123));
-  // console.log(symbols);
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
-
-// console.log(randomLower());
-// console.log(randomUpper());
-// console.log(randomNumber());
-// console.log(randomSymbol());

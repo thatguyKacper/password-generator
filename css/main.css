@@ -46,8 +46,7 @@ h2 {
 }
 
 .result-container #result {
-  word-wrap: break-word;
-  max-width: calc(100%-40px);
+  font-size: 24px;
 }
 
 .result-container .btn {
@@ -70,6 +69,7 @@ h2 {
 .btn-large {
   display: block;
   width: 100%;
+  font-size: 24px;
 }
 
 .setting {
@@ -77,4 +77,22 @@ h2 {
   justify-content: space-between;
   align-items: center;
   margin: 15px 0;
+}
+
+input[type='number'] {
+  cursor: pointer;
+  border: none;
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  border: 3px solid #f2f2f9;
+  padding: 9px;
+  display: inline-block;
+  position: relative;
+}
+
+input[type='checkbox']:checked {
+  background-color: #f2f2f9;
 }
