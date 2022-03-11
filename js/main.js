@@ -1,3 +1,64 @@
+const resultEl = document.getElementById('result');
+const lengthEl = document.getElementById('length');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const numbersEl = document.getElementById('numbers');
+const symbolsEl = document.getElementById('symbols');
+const generateEl = document.getElementById('generate');
+
+generateEl.addEventListener('click', () => {
+  const length = Number(lengthEl.value);
+  const hasUpper = uppercaseEl.checked;
+  const hasLower = lowercaseEl.checked;
+  const hasNumber = numbersEl.checked;
+  const hasSymbol = symbolsEl.checked;
+
+  resultEl.innerText = generatePassword(
+    length,
+    hasUpper,
+    hasLower,
+    hasNumber,
+    hasSymbol
+  );
+});
+
+function generatePassword(length, upper, lower, number, symbol) {
+  let generatedChars = [];
+
+  if (upper) {
+    for (let index = 0; index < length; index++) {
+      generatedChars.push(randomUpper());
+    }
+  }
+
+  if (lower) {
+    for (let index = 0; index < length; index++) {
+      generatedChars.push(randomLower());
+    }
+  }
+
+  if (number) {
+    for (let index = 0; index < length; index++) {
+      generatedChars.push(randomNumber());
+    }
+  }
+
+  if (symbol) {
+    for (let index = 0; index < length; index++) {
+      generatedChars.push(randomSymbol());
+    }
+  }
+  // console.log(generatedChars);
+  let finalPassword = [];
+
+  for (let index = 0; index < length; index++) {
+    finalPassword.push(
+      generatedChars[Math.floor(Math.random() * generatedChars.length)]
+    );
+  }
+  return finalPassword.join('');
+}
+
 function randomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
@@ -17,11 +78,11 @@ function randomSymbol() {
   }
   symbols.push(String.fromCharCode(Math.floor(Math.random() * 6) + 91));
   symbols.push(String.fromCharCode(Math.floor(Math.random() * 4) + 123));
-  console.log(symbols);
+  // console.log(symbols);
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-console.log(randomLower());
-console.log(randomUpper());
-console.log(randomNumber());
-console.log(randomSymbol());
+// console.log(randomLower());
+// console.log(randomUpper());
+// console.log(randomNumber());
+// console.log(randomSymbol());
